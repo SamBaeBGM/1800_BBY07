@@ -8,6 +8,7 @@
 This browser based web application to ...
 * Hi my name is Sam. I am excited about this project because it will be our first project together.
 * Hi my name my name is Shayan. This is my first project on comp 1800!
+* Hi my name is Zihan. I am excited!
 	
 ## Technologies
 Technologies used for this project:
