@@ -14,7 +14,7 @@
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
 
     <!-- Optional styles and scripts of your own -->
-    <link type="text/css" href="styles/my_style.css">
+    <link type="text/css" rel="stylesheet" href="styles/my_style.css">
 
     <!-- Link to the api keys for your firebase project -->
     <script src="scripts/firebaseAPI.js"></script>
@@ -23,9 +23,9 @@
 
 <body>
     <main>
-        <nav class="navbar navbar-dark bg-secondary" aria-label="First navbar example">
+        <nav class="navbar navbar-dark bg-success" aria-label="First navbar example">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="main.html">
                     <img src="./pigeon.jpeg" alt="" width="50" height="50" class="d-inline-block align-text-center">
                     Pigeon
                 </a>
@@ -55,30 +55,38 @@
     <br>
 
     <div class="container text-body">
-        <h1 class="display-4 "><b>Dashboard:</b></h1>
+        <h1 class="display-4 "><b>Settings:</b></h1>
         <br>
-        <h4 class="display-6 "> <u>Important:</u></h4>
+        <h4 class="display-6 "> <u>Color:</u></h4>
         <br>
         <div class="list-group">
             <label class="list-group-item">
-                <input class="form-check-input me-1" type="checkbox" value="Reminder1">
-                Reminder1
-            </label>
-            <label class="list-group-item">
-                <input class="form-check-input me-1" type="checkbox" value="Reminder2">
-                Reminder2
+                <div>
+                    <input type="radio" id="red" name="colors" value="red" checked>
+                    <label for="red">red</label>
+                </div>
+                <div>
+                    <input type="radio" id="yellow" name="colors" value="yellow" checked>
+                    <label for="yellow">yellow</label>
+                </div>
             </label>
         </div>
         <br>
     </div>
 
     <div class="container text-body">
-        <h4 class="display-6 "> <u>General:</u></h4>
+        <h4 class="display-6 "> <u>Something:</u></h4>
         <br>
         <div class="list-group">
             <label class="list-group-item">
-                <input class="form-check-input me-1" type="checkbox" value="Reminder3">
-                Reminder3
+                <div>
+                    <input type="radio" id="option1" name="drone" value="option1" checked>
+                    <label for="option1">option1</label>
+                </div>
+                <div>
+                    <input type="radio" id="option2" name="drone" value="option2" checked>
+                    <label for="option2">option2</label>
+                </div>
             </label>
         </div>
         <br>
@@ -89,7 +97,7 @@
         <br>
         <br>
         <br>
-        <a href="main.html" class="btn btn-success btn-lg">+</a>
+        
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
