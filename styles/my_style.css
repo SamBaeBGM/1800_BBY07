@@ -33,6 +33,12 @@ body{
 .todo-list.only-complete .todo-item:not(.complete) {
   display: none
 }
+#list1 .select-input.form-control[readonly]:not([disabled]) {
+  background-color: #fbfbfb;
+}
+#Main-navbar{
+  background-color: blue;
+}
 
 .todo-list.only-complete .todo-item.complete {
   display: block
