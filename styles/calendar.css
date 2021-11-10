@@ -8,8 +8,7 @@ body {
 /* Month header */
 .month {
   padding: 70px 25px;
-  width: 100%;
-  background: #1e8153;
+  width: 100%;;
   text-align: center;
 }
 
@@ -63,7 +62,7 @@ body {
 /* Highlight the "current" day */
 .days li .active {
   padding: 5px;
-  background: #1e8153;
+;
   color: white
 }
 @media screen and (min-width: 1280px) {
