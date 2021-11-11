@@ -88,4 +88,24 @@ $( document ).ready(function() {
     });
 });
 
+var test = document.getElementsByClassName("navbar"),
+    classes = ['userColorPurple', 'userColorBlue', 'userColorGreen'];
+
+test.innerHTML = "";
+
+
+
+if ( !document.getElementByClassName("navbar").classList.contains('userColorBlue')) {
+    document.getElementByClassName("navbar").classList.remove('userColorGreen','userColorPurple');
+    document.getElementByClassName("navbar").classList.add('userColorBlue');
+} if (!document.getElementByClassName("navbar").classList.contains('userColorGreen')) {
+    document.getElementByClassName("navbar").classList.remove('userColorBlue','userColorPurple');
+    document.getElementByClassName("navbar").classList.add('userColorGreen');
+} if (!document.getElementByClassName("navbar").classList.contains('userColorPurple')) {
+    document.getElementByClassName("navbar").classList.remove('userColorBlue','userColorGreen');
+    document.getElementByClassName("navbar").classList.add('userColorPurple');
+} else {
+    
+}
+
 
