@@ -2,7 +2,7 @@ function sayHello() {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
-            // Do something for the user here. 
+            // Do something for the user here.
             console.log(user.uid);
             db.collection("users").doc(user.uid)
                 .get()
@@ -20,10 +20,10 @@ function sayHello() {
 //sayHello();
 
 $( document ).ready(function() {
-    
+
     "use strict";
-    
-    var todo = function() { 
+
+    var todo = function() {
         $('.todo-list .todo-item input').click(function() {
         if($(this).is(':checked')) {
             $(this).parent().parent().parent().toggleClass('complete');
@@ -31,28 +31,28 @@ $( document ).ready(function() {
             $(this).parent().parent().parent().toggleClass('complete');
         }
     });
-    
+
     $('.todo-nav .all-task').click(function() {
         $('.todo-list').removeClass('only-active');
         $('.todo-list').removeClass('only-complete');
         $('.todo-nav li.active').removeClass('active');
         $(this).addClass('active');
     });
-    
+
     $('.todo-nav .active-task').click(function() {
         $('.todo-list').removeClass('only-complete');
         $('.todo-list').addClass('only-active');
         $('.todo-nav li.active').removeClass('active');
         $(this).addClass('active');
     });
-    
+
     $('.todo-nav .completed-task').click(function() {
         $('.todo-list').removeClass('only-active');
         $('.todo-list').addClass('only-complete');
         $('.todo-nav li.active').removeClass('active');
         $(this).addClass('active');
     });
-    
+
     $('#uniform-all-complete input').click(function() {
         if($(this).is(':checked')) {
             $('.todo-item .checker span:not(.checked) input').click();
@@ -60,14 +60,14 @@ $( document ).ready(function() {
             $('.todo-item .checker span.checked input').click();
         }
     });
-    
+
     $('.remove-todo-item').click(function() {
         $(this).parent().remove();
     });
     };
-    
+
     todo();
-    
+
     $(".add-task").keypress(function (e) {
         if ((e.which == 13)&&(!$(this).val().length == 0)) {
             $('<div class="todo-item"><div class="checker"><span class=""><input type="checkbox"></span></div> <span>' + $(this).val() + '</span> <a href="javascript:void(0);" class="float-right remove-todo-item"><i class="icon-close"></i></a></div>').insertAfter('.todo-list .todo-item:last-child');
@@ -88,40 +88,64 @@ $( document ).ready(function() {
     });
 });
 
-
-
-function myFunction() {
-
-    var test = document.getElementsByClassName("navbar"),
-    classes = ['userColorPurple', 'userColorBlue', 'userColorGreen'];
-
-    test.innerHTML = "";
-
-    while (document.getElementById("ColorBlue").checked) {
-        console.log("asdas");
+const btn = document.querySelector('#btn');
+// handle button click
+btn.onclick = function () {
+    const rbs = document.querySelectorAll('input[name="colors"]');
+    let selectedValue;
+    for (const rb of rbs) {
+        if (rb.checked) {
+            selectedValue = rb.value;
+            break;
+        }
     }
-    
-    console.log("asdas");
-    
-    const texts = document.getElementsByClassName("navbar");
-
-    console.log(texts);
-    
-    if ( !texts.classList.contains('userColorBlue') && document.getElementById('ColorBlue').checked) {
-        texts.classList.remove('userColorGreen','userColorPurple');
-        texts.classList.add('userColorBlue');
-    } if (!texts.classList.contains('userColorGreen') && document.getElementById('ColorGreen').checked) {
-        texts.classList.remove('userColorBlue','userColorPurple');
-        texts.classList.add('userColorGreen');
-    } if (!document.getElementByClassName("navbar").classList.contains('userColorPurple') && document.getElementById('ColorPurple').checked) {
-        document.getElementByClassName("navbar").classList.remove('userColorBlue','userColorGreen');
-        document.getElementByClassName("navbar").classList.add('userColorPurple');
-    } else {
-        
+    if (!document.getElementById("settingsNav").classList.contains('userColorPurple') && selectedValue == "Purple") {
+        document.getElementById("settingsNav").classList.remove('userColorBlue','userColorGreen');
+        document.getElementById("settingsNav").classList.add('userColorPurple');
     }
-    
+    if (!document.getElementById("settingsNav").classList.contains('userColorGreen') && selectedValue == "Green") {
+        document.getElementById("settingsNav").classList.remove('userColorBlue','userColorPurple');
+        document.getElementById("settingsNav").classList.add('userColorGreen');
+    }
+    if (!document.getElementById("settingsNav").classList.contains('userColorBlue') && selectedValue == "Blue") {
+        document.getElementById("settingsNav").classList.remove('userColorGreen','userColorPurple');
+        document.getElementById("settingsNav").classList.add('userColorBlue');
+    }
+    console.log(selectedValue)
+};
+
+var matches = element.getElementsByClassName('colorbox');
+
+for (var i=0; i<matches.length; i++) {
+  matches[i].classList.remove('colorbox');
+  matches.item(i).classList.add('hueframe');
 }
+// function myFunction() {
 
-myFunction()
+//     var test = document.getElementsByClassName("navbar"),
+//     classes = ['userColorPurple', 'userColorBlue', 'userColorGreen'];
 
+//     test.innerHTML = "";
 
+//     console.log("asdas");
+
+//     var texts = document.getElementsByClassName("navbar");
+
+//     console.log(texts);
+
+//     if (!document.getElementById("settingsNav").classList.contains('userColorBlue') && e.getStateChange() == ItemEvent.SELECTED) {
+//         document.getElementById("settingsNav").classList.remove('userColorGreen','userColorPurple');
+//         document.getElementById("settingsNav").classList.add('userColorBlue');
+//     }
+//     if (!document.getElementById("settingsNav").classList.contains('userColorGreen') && document.getElementById('ColorGreen').checked) {
+//         document.getElementById("settingsNav").classList.remove('userColorBlue','userColorPurple');
+//         document.getElementById("settingsNav").classList.add('userColorGreen');
+//     }
+//     if (!document.getElementById("settingsNav").classList.contains('userColorPurple') && selectedValue == "Purple") {
+//         document.getElementById("settingsNav").classList.remove('userColorBlue','userColorGreen');
+//         document.getElementById("settingsNav").classList.add('userColorPurple');
+//     }
+
+// }
+
+// myFunction()
