@@ -88,24 +88,40 @@ $( document ).ready(function() {
     });
 });
 
-var test = document.getElementsByClassName("navbar"),
+
+
+function myFunction() {
+
+    var test = document.getElementsByClassName("navbar"),
     classes = ['userColorPurple', 'userColorBlue', 'userColorGreen'];
 
-test.innerHTML = "";
+    test.innerHTML = "";
 
+    while (document.getElementById("ColorBlue").checked) {
+        console.log("asdas");
+    }
+    
+    console.log("asdas");
+    
+    const texts = document.getElementsByClassName("navbar");
 
-
-if ( !document.getElementByClassName("navbar").classList.contains('userColorBlue')) {
-    document.getElementByClassName("navbar").classList.remove('userColorGreen','userColorPurple');
-    document.getElementByClassName("navbar").classList.add('userColorBlue');
-} if (!document.getElementByClassName("navbar").classList.contains('userColorGreen')) {
-    document.getElementByClassName("navbar").classList.remove('userColorBlue','userColorPurple');
-    document.getElementByClassName("navbar").classList.add('userColorGreen');
-} if (!document.getElementByClassName("navbar").classList.contains('userColorPurple')) {
-    document.getElementByClassName("navbar").classList.remove('userColorBlue','userColorGreen');
-    document.getElementByClassName("navbar").classList.add('userColorPurple');
-} else {
+    console.log(texts);
+    
+    if ( !texts.classList.contains('userColorBlue') && document.getElementById('ColorBlue').checked) {
+        texts.classList.remove('userColorGreen','userColorPurple');
+        texts.classList.add('userColorBlue');
+    } if (!texts.classList.contains('userColorGreen') && document.getElementById('ColorGreen').checked) {
+        texts.classList.remove('userColorBlue','userColorPurple');
+        texts.classList.add('userColorGreen');
+    } if (!document.getElementByClassName("navbar").classList.contains('userColorPurple') && document.getElementById('ColorPurple').checked) {
+        document.getElementByClassName("navbar").classList.remove('userColorBlue','userColorGreen');
+        document.getElementByClassName("navbar").classList.add('userColorPurple');
+    } else {
+        
+    }
     
 }
+
+myFunction()
 
 

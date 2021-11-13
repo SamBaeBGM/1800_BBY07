@@ -115,3 +115,7 @@ div.button, div.checker, div.radio, div.selector, div.uploader {
   box-shadow: 0 1px 15px rgba(0,0,0,0.04), 0 1px 6px rgba(0,0,0,0.04);
 }
 
+label {
+  font-size: 14pt;
+}
+
