@@ -2,18 +2,19 @@
   list-style-type: none;
 }
 
-body {
+.calendar-container {
   font-family: 'Lato', sans-serif;
 }
-/* Month header */
-.month {
-  padding: 70px 25px;
+
+/* Title */
+.title {
+  padding: 50px 25px;
   width: 100%;;
   text-align: center;
 }
 
 
-.month ul li {
+.title ul li {
   color: white;
   font-size: 20px;
   text-transform: uppercase;
@@ -21,52 +22,67 @@ body {
 }
 
 /* Previous button inside month header */
-.month .prev {
+.title #prev {
   float: left;
 }
 
 /* Next button */
-.month .next {
+.title #next {
   float: right;
 }
 
 .weekdays {
   margin: 0;
   padding: 10px 0;
-  background-color:#ddd;
+  background-color:#eee;
 }
 
 .weekdays li {
   display: inline-block;
   width: 13.6%;
-  color: #666;
+  color:black;
   text-align: center;
 }
 
-.days {
+#days {
   padding: 10px 0;
-  background: #eee;
+  background:#fff;
   margin: 0;
 }
 
-.days li {
+#days li {
   list-style-type: none;
   display: inline-block;
-  width: 13.6%;
+  width: 14.0%;
   text-align: center;
   margin-bottom: 5px;
   font-size:12px;
-  color: #777;
+}
+
+.lightgrey{
+	color: #777;
+}
+.darkgrey{
+	color:black; 
 }
 
 /* Highlight the "current" day */
-.days li .active {
+#days li .active {
   padding: 5px;
-;
-  color: white
 }
 .calendar-container{
   padding: 5%;
+
+}
+.userColorBlue{
+  color: white;
+}
+
+#prev:hover{
+  background-color: white;
+}
+#next:hover{
+  background-color: white;
 }
 
 @media screen and (min-width: 1280px) {
