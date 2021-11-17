@@ -110,3 +110,48 @@ div.button, div.checker, div.radio, div.selector, div.uploader {
   box-shadow: 0 1px 15px rgba(0,0,0,0.04), 0 1px 6px rgba(0,0,0,0.04);
 }
 
+
+
+
+.todo-inputBox {
+  margin: 15px 0;
+}
+
+.form-group {
+  padding-left: 0;
+}
+
+.text-right {
+  margin-top: 2%;
+}
+.show-list {
+  padding: 0;
+  margin-top: 15px;
+  position: relative;
+  max-height: 35vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#submit-button {
+  cursor: pointer;
+  padding-top: 1%;
+}
+
+#todosBox {
+  position: relative;
+  top: 50vh;
+  color: #333;
+
+}
+
+.delete {
+  cursor: pointer; 
+  float: right;
+  margin-left: 2%;
+}
+
+.edit {
+  cursor: pointer; 
+  float: right;
+}
