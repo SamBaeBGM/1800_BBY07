@@ -2,7 +2,7 @@ function sayHello() {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
-            // Do something for the user here. 
+            // Do something for the user here.
             console.log(user.uid);
             db.collection("users").doc(user.uid)
                 .get()
@@ -213,3 +213,66 @@ function todoClickEvent(target, data) {
         });
     }
 };
+
+
+const btn = document.querySelector('#btn');
+// handle button click
+btn.onclick = function () {
+    const rbs = document.querySelectorAll('input[name="colors"]');
+    let selectedValue;
+    for (const rb of rbs) {
+        if (rb.checked) {
+            selectedValue = rb.value;
+            break;
+        }
+    }
+    if (!document.getElementById("settingsNav").classList.contains('userColorPurple') && selectedValue == "Purple") {
+        document.getElementById("settingsNav").classList.remove('userColorBlue','userColorGreen');
+        document.getElementById("settingsNav").classList.add('userColorPurple');
+    }
+    if (!document.getElementById("settingsNav").classList.contains('userColorGreen') && selectedValue == "Green") {
+        document.getElementById("settingsNav").classList.remove('userColorBlue','userColorPurple');
+        document.getElementById("settingsNav").classList.add('userColorGreen');
+    }
+    if (!document.getElementById("settingsNav").classList.contains('userColorBlue') && selectedValue == "Blue") {
+        document.getElementById("settingsNav").classList.remove('userColorGreen','userColorPurple');
+        document.getElementById("settingsNav").classList.add('userColorBlue');
+    }
+    console.log(selectedValue)
+};
+
+var matches = element.getElementsByClassName('colorbox');
+
+for (var i=0; i<matches.length; i++) {
+  matches[i].classList.remove('colorbox');
+  matches.item(i).classList.add('hueframe');
+}
+// function myFunction() {
+
+//     var test = document.getElementsByClassName("navbar"),
+//     classes = ['userColorPurple', 'userColorBlue', 'userColorGreen'];
+
+//     test.innerHTML = "";
+
+//     console.log("asdas");
+
+//     var texts = document.getElementsByClassName("navbar");
+
+//     console.log(texts);
+
+//     if (!document.getElementById("settingsNav").classList.contains('userColorBlue') && e.getStateChange() == ItemEvent.SELECTED) {
+//         document.getElementById("settingsNav").classList.remove('userColorGreen','userColorPurple');
+//         document.getElementById("settingsNav").classList.add('userColorBlue');
+//     }
+//     if (!document.getElementById("settingsNav").classList.contains('userColorGreen') && document.getElementById('ColorGreen').checked) {
+//         document.getElementById("settingsNav").classList.remove('userColorBlue','userColorPurple');
+//         document.getElementById("settingsNav").classList.add('userColorGreen');
+//     }
+//     if (!document.getElementById("settingsNav").classList.contains('userColorPurple') && selectedValue == "Purple") {
+//         document.getElementById("settingsNav").classList.remove('userColorBlue','userColorGreen');
+//         document.getElementById("settingsNav").classList.add('userColorPurple');
+//     }
+
+// }
+
+// myFunction()

@@ -36,10 +36,15 @@ body{
 #list1 .select-input.form-control[readonly]:not([disabled]) {
   background-color: #fbfbfb;
 }
-#Main-navbar{
-  background-color: blue;
+.userColorPurple{
+  background-color: rgb(102, 51, 153);
 }
-
+.userColorBlue{
+  background-color: rgb(0, 70, 132);
+}
+.userColorGreen{
+  background-color: #0d6d38;
+}
 .todo-list.only-complete .todo-item.complete {
   display: block
 }

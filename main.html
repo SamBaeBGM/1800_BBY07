@@ -40,7 +40,7 @@
 
 <body>
     <main>
-        <nav class="navbar navbar-dark" id="Main-navbar" aria-label="First navbar example">
+        <nav class="navbar navbar-dark userColorBlue" aria-label="First navbar example">
             <div class="container-fluid">
                 <a class="navbar-brand" href="main.html">
                     <img src="./images/pigeon.jpeg" alt="" width="50" height="50"
@@ -72,59 +72,34 @@
             </div>
         </nav>
     </main>
-    <br><br><br>
+    <br><br>
 
     <div class="calendar-container">
-        <div class="month">
+        <h1 class="display-6 "><b>Calendar:</b></h1>
+        <div class="title userColorBlue">
             <ul>
-                <li class="prev">&#10094;</li>
-                <li class="next">&#10095;</li>
-                <li>November 2021</li>
+                <li id="prev">&#10094;</li>
+                <li id="next">&#10095;</li>
+                <li id="calendar-month">Month</li>
+                <li id="calendar-year">Year</li>
             </ul>
         </div>
 
-        <ul class="weekdays">
-            <li>Mon</li>
-            <li>Tue</li>
-            <li>Wed</li>
-            <li>Thu</li>
-            <li>Fri</li>
-            <li>Sat</li>
-            <li>Sun</li>
-        </ul>
+        <div class="calendar-body">
+            <ul class="weekdays">
+                <li>Mon</li>
+                <li>Tue</li>
+                <li>Wed</li>
+                <li>Thu</li>
+                <li>Fri</li>
+                <li>Sat</li>
+                <li>Sun</li>
+            </ul>
 
-        <ul class="days">
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li><span class="active">5</span></li>
-            <li>6</li>
-            <li>7</li>
-            <li>8</li>
-            <li>9</li>
-            <li>10</li>
-            <li>11</li>
-            <li>12</li>
-            <li>13</li>
-            <li>14</li>
-            <li>15</li>
-            <li>16</li>
-            <li>17</li>
-            <li>18</li>
-            <li>19</li>
-            <li>20</li>
-            <li>21</li>
-            <li>22</li>
-            <li>23</li>
-            <li>24</li>
-            <li>25</li>
-            <li>26</li>
-            <li>27</li>
-            <li>28</li>
-            <li>29</li>
-            <li>30</li>
-        </ul>
+            <ul id="days">
+
+            </ul>
+        </div>
     </div>
 
     <section id=" todosBox" class="container-fluid float-start" style="width: 55%; padding: 4% 5% 0% 5%;">
@@ -153,6 +128,39 @@
         </div>
     </section>
 
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+        </script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+    <!-- Link to the api keys for your firebase project -->
+    <script src="scripts/firebaseBBY07.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+        </script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+    <!-- Link to the api keys for your firebase project -->
+    <script src="./scripts/firebaseBBY07.js"></script>
+
+    <!-- Link to the my script javascript -->
+    <script src="./scripts/my_script.js"></script>
+    <!-- reminder cration javascript-->
+    <script src="./scripts/remindercreation.js"></script>
+
+    <!-- Link to calendar.js -->
+    <script src="scripts/calendar.js"></script>
 </body>
 
 </html>
