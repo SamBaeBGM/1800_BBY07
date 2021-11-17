@@ -197,11 +197,10 @@ function todoClickEvent(target, data) {
         });
         // Delete function
         target[i].childNodes[5].addEventListener('click', function() {
-            if (this.parentNode.classList.value.indexOf("checked") >= 0) {
                 this.parentNode.remove();
                 data.splice(i, 1);
                 target = document.querySelectorAll('.todo');
-            }
+            
         });
         // Edit function
         target[i].childNodes[7].addEventListener('click', function() {
