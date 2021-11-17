@@ -215,7 +215,7 @@ function todoClickEvent(target, data) {
 };
 
 
-const btn = document.querySelector(id="btn");
+const btn = document.querySelector('#btn');
 // handle button click
 btn.onclick = function () {
     const rbs = document.querySelectorAll('input[name="colors"]');

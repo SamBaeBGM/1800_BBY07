@@ -83,10 +83,11 @@
 }
 
 #prev:hover{
-  background-color: white;
+  cursor: pointer;
 }
 #next:hover{
-  background-color: white;
+  cursor: pointer;
+
 }
 
 @media screen and (min-width: 1280px) {
