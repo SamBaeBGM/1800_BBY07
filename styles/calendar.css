@@ -101,14 +101,5 @@
     padding: 2%;
   }
 
-  .container text-body{
-    display: block;
-    float: left;
-    display: grid;
-    width: 40%;
-  }
 
-  .list-group-item{
-    width: 80%;
-  }
 }
