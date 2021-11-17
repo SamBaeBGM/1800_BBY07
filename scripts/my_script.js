@@ -114,12 +114,12 @@ btn.onclick = function () {
     console.log(selectedValue)
 };
 
-var matches = element.getElementsByClassName('colorbox');
+// var matches = element.getElementsByClassName('colorbox');
 
-for (var i=0; i<matches.length; i++) {
-  matches[i].classList.remove('colorbox');
-  matches.item(i).classList.add('hueframe');
-}
+// for (var i=0; i<matches.length; i++) {
+//   matches[i].classList.remove('colorbox');
+//   matches.item(i).classList.add('hueframe');
+// }
 // function myFunction() {
 
 //     var test = document.getElementsByClassName("navbar"),
