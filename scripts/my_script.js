@@ -189,6 +189,7 @@ function todoClickEvent(target, data) {
             if (this.parentNode.classList.value.indexOf("checked") >= 0) {
                 this.parentNode.classList.remove("checked");
                 this.parentNode.style.color = "#000";
+                this.parentNode.style.textDecoration = "none";
             } else {
                 this.parentNode.classList.add("checked");
                 this.parentNode.style.color = "red";
@@ -213,7 +214,6 @@ function todoClickEvent(target, data) {
         });
     }
 };
-
 
 const btn = document.querySelector('#btn');
 // handle button click
