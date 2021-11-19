@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
 .calendar-container {
   margin-top: 10%;
 }
@@ -28,11 +30,14 @@
 /* Previous button inside month header */
 .title #prev {
   float: left;
+  margin-top: 20px;
 }
 
 /* Next button */
 .title #next {
   float: right;
+  margin-top: 20px;
+  margin-right: 25px;
 }
 
 .weekdays {
@@ -87,6 +92,15 @@
 }
 #next:hover{
   cursor: pointer;
+
+}
+
+#days_msg{
+  margin: 10px 30px;
+}
+
+.calendar-events {
+  background-color:#eeeeee;
 
 }
 
