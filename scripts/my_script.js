@@ -240,8 +240,8 @@ btn.onclick = function () {
     console.log(selectedValue)
 };
 
-
 var currentUser
+
 function populateInfo() {
     firebase.auth().onAuthStateChanged(user => {
         // Check if user is signed in:
@@ -254,28 +254,25 @@ function populateInfo() {
                 .then(userDoc => {
                     //get the data fields of the user
                     var userName = userDoc.data().name;
-                    var userWork = userDoc.data().work;
                     var userEmail = userDoc.data().email;
+                    var userWork = userDoc.data().work;
 
                     //if the data fields are not empty, then write them in to the form.
                     if (userName != null) {
                         document.getElementById("nameInput").value = userName;
                     }
-                    if (userWork != null) {
-                        document.getElementById("workInput").value = userWork;
-                    }
                     if (userEmail != null) {
                         document.getElementById("emailInput").value = userEmail;
                     }
+                    if (userWork != null) {
+                        document.getElementById("workInput").value = userWork;
+                    }
                 })
         } else {
-            // No user is signed in.
-            console.log("No user is signed in");
+            console.log("no user logged in.")
         }
     });
 }
-
-//call the function to run it 
 populateInfo();
 
 function editUserInfo() {
@@ -284,46 +281,20 @@ function editUserInfo() {
 }
 
 function saveUserInfo() {
-    userName = document.getElementById('nameInput').value;       //get the value of the field with id="nameInput"
-    userWork = document.getElementById('workInput').value;     //get the value of the field with id="schoolInput"
-    userEmail = document.getElementById('emailInput').value;       //get the value of the field with id="cityInput"
+    userName = document.getElementById('nameInput').value;
+    userEmail = document.getElementById('emailInput').value;
+    userWork = document.getElementById('workInput').value;
 
     currentUser.update({
-        name: userName,
-        work: userWork,
-        email: userEmail
-    })
+            name: userName,
+            email: userEmail,
+            work: userWork
+        })
         .then(() => {
             console.log("Document successfully updated!");
         })
+
+    
+    //Enable the form fields
     document.getElementById('personalInfoFields').disabled = true;
 }
-// function myFunction() {
-
-//     var test = document.getElementsByClassName("navbar"),
-//     classes = ['userColorPurple', 'userColorBlue', 'userColorGreen'];
-
-//     test.innerHTML = "";
-
-//     console.log("asdas");
-
-//     var texts = document.getElementsByClassName("navbar");
-
-//     console.log(texts);
-
-//     if (!document.getElementById("settingsNav").classList.contains('userColorBlue') && e.getStateChange() == ItemEvent.SELECTED) {
-//         document.getElementById("settingsNav").classList.remove('userColorGreen','userColorPurple');
-//         document.getElementById("settingsNav").classList.add('userColorBlue');
-//     }
-//     if (!document.getElementById("settingsNav").classList.contains('userColorGreen') && document.getElementById('ColorGreen').checked) {
-//         document.getElementById("settingsNav").classList.remove('userColorBlue','userColorPurple');
-//         document.getElementById("settingsNav").classList.add('userColorGreen');
-//     }
-//     if (!document.getElementById("settingsNav").classList.contains('userColorPurple') && selectedValue == "Purple") {
-//         document.getElementById("settingsNav").classList.remove('userColorBlue','userColorGreen');
-//         document.getElementById("settingsNav").classList.add('userColorPurple');
-//     }
-
-// }
-
-// myFunction()
