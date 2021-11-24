@@ -185,13 +185,8 @@ function todoClickEvent(target, data) {
     for (let i = 0; i < target.length; i++) {
         // console.log(target[i].childNodes)
         //Style change if the check box is clicked or not.
-<<<<<<< HEAD
-        target[i].childNodes[1].addEventListener('click', function() {
-            if (this.parentNode.classList.  value.indexOf("checked") >= 0) {
-=======
         target[i].childNodes[1].addEventListener('click', function () {
             if (this.parentNode.classList.value.indexOf("checked") >= 0) {
->>>>>>> 0e86e1c6c5d42bb72372cb276195a8b27471620e
                 this.parentNode.classList.remove("checked");
                 this.parentNode.style.color = "#000";
                 this.parentNode.style.textDecoration = "none";
