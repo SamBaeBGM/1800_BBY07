@@ -244,6 +244,7 @@ function todoClickEvent(target, data) {
 var currentUser
 var userReminders;
 
+// This function populates user info for settings page.
 function populateInfo() {
     firebase.auth().onAuthStateChanged(user => {
         // Check if user is signed in:
