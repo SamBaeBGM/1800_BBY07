@@ -5,13 +5,10 @@ body{
   margin-top:20px;
   background: #f8f8f8;
   font-family: 'Lato', sans-serif;
+  font-size: large;
 }
-
-
-.todo-nav {
-  margin-top: 10px
-}
-
+ 
+/* The color change selected by the user */
 .userColorPurple{
   background-color: rgb(102, 51, 153);
 }
@@ -25,41 +22,63 @@ body{
   margin: 15px 0;
 }
 
-.form-group {
-  padding-left: 0;
+#dashboard {
+  width: 100%;
+  margin-top: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
-.text-right {
-  margin-top: 2%;
-}
-.show-list {
-  padding: 0;
-  margin-top: 15px;
-  position: relative;
-  max-height: 35vh;
-  overflow-y: auto;
-  overflow-x: hidden;
+/* This is the to do dashboard */
+.todosBox {
+  font-family: 'lato', sans-serif;
+  background-color: rgb(241, 238, 238);
+  height: 100%;
+  border-radius: 20px;
+  padding-top: 3%;
+  padding-bottom: 15%;
 }
 
+.dashboard-header {
+  margin-bottom: 3%;
+}
+
+/* Add button */
 #submit-button {
   cursor: pointer;
   padding-top: 1%;
 }
 
-#todosBox {
-  position: relative;
-  top: 50vh;
-  color: #333;
-
-}
-
+/* reminder delete */
 .delete {
   cursor: pointer; 
   float: right;
   margin-left: 2%;
 }
 
+/* reminder edit */
 .edit {
   cursor: pointer; 
   float: right;
 }
+
+/* This is the styling for Remove all and remove checked button*/
+.text-right {
+  margin-top: 3%;
+}
+
+#removeAllChecked {
+  margin-left: 1%;
+}
+
+
+@media screen and (min-width: 1280px) {
+  #dashboard {
+    float: left;
+    padding-left: 3%;
+    padding-right: 3%;
+    width: 59%;
+  }
+
+}
+

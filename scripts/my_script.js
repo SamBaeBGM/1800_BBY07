@@ -169,7 +169,7 @@ function makeList(target, data) {
     }
     for (let i = 0; i < data.length; i++) {
         let template = `<li class="todo list-group-item col-xs-12" style="width:100%">
-        <input type="checkbox" class="checkbox-inline" style="margin:0;">
+        <input type="checkbox" class="custom-checkbox checkbox-lg" style="margin:0;">
         <b>${data[i]}</b>
         <span class="delete">Delete</span>
         <span class="edit">Edit</span>
@@ -186,9 +186,10 @@ function todoClickEvent(target, data) {
         // console.log(target[i].childNodes)
         //Style change if the check box is clicked or not.
         target[i].childNodes[1].addEventListener('click', function() {
-            if (this.parentNode.classList.value.indexOf("checked") >= 0) {
+            if (this.parentNode.classList.  value.indexOf("checked") >= 0) {
                 this.parentNode.classList.remove("checked");
                 this.parentNode.style.color = "#000";
+                this.parentNode.style.textDecoration = "none";
             } else {
                 this.parentNode.classList.add("checked");
                 this.parentNode.style.color = "red";
