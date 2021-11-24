@@ -10,6 +10,11 @@ var next = document.getElementById("next");
 var ctitle = document.getElementById("calendar-month");
 var cyear = document.getElementById("calendar-year");
 
+// initialize ul and li in days
+var oLi=holder.getElementsByTagName("li");
+var oDayMsg=document.getElementById("days_msg");
+// var oLi.length=0;
+
 //create objects based on current time
 var my_date = new Date();
 var my_year = my_date.getFullYear();
@@ -79,6 +84,7 @@ prev.onclick = function(e){
 		my_month = 11;
 	}
 	refreshDate();
+
 }
 next.onclick = function(e){
 	e.preventDefault();
@@ -88,4 +94,26 @@ next.onclick = function(e){
 		my_month = 0;
 	}
 	refreshDate();
+
 }
+//Events
+function myDaysClk(liNum){
+	var li_day=oLi[liNum].innerHTML;
+	var daysMsg="meeting";
+	 oDayMsg.innerHTML = cyear.innerHTML+','+ctitle.innerHTML+','+li_day;
+	// alert(li_day);
+}
+
+
+oLi[7].onclick=function(e){
+	e.preventDefault();
+	myDaysClk(7);
+}
+oLi[8].onclick=function(e){
+	e.preventDefault();
+	myDaysClk(8);
+}
+oLi[9].onclick=function(e){
+	e.preventDefault();
+	myDaysClk(9);
+} 

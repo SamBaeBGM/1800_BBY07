@@ -197,11 +197,10 @@ function todoClickEvent(target, data) {
         });
         // Delete function
         target[i].childNodes[5].addEventListener('click', function() {
-            if (this.parentNode.classList.value.indexOf("checked") >= 0) {
                 this.parentNode.remove();
                 data.splice(i, 1);
                 target = document.querySelectorAll('.todo');
-            }
+            
         });
         // Edit function
         target[i].childNodes[7].addEventListener('click', function() {
@@ -241,38 +240,61 @@ btn.onclick = function () {
     console.log(selectedValue)
 };
 
-// var matches = element.getElementsByClassName('colorbox');
+var currentUser
 
-// for (var i=0; i<matches.length; i++) {
-//   matches[i].classList.remove('colorbox');
-//   matches.item(i).classList.add('hueframe');
-// }
-// function myFunction() {
+function populateInfo() {
+    firebase.auth().onAuthStateChanged(user => {
+        // Check if user is signed in:
+        if (user) {
 
-//     var test = document.getElementsByClassName("navbar"),
-//     classes = ['userColorPurple', 'userColorBlue', 'userColorGreen'];
+            //go to the correct user document by referencing to the user uid
+            currentUser = db.collection("users").doc(user.uid)
+            //get the document for current user.
+            currentUser.get()
+                .then(userDoc => {
+                    //get the data fields of the user
+                    var userName = userDoc.data().name;
+                    var userEmail = userDoc.data().email;
+                    var userWork = userDoc.data().work;
 
-//     test.innerHTML = "";
+                    //if the data fields are not empty, then write them in to the form.
+                    if (userName != null) {
+                        document.getElementById("nameInput").value = userName;
+                    }
+                    if (userEmail != null) {
+                        document.getElementById("emailInput").value = userEmail;
+                    }
+                    if (userWork != null) {
+                        document.getElementById("workInput").value = userWork;
+                    }
+                })
+        } else {
+            console.log("no user logged in.")
+        }
+    });
+}
+populateInfo();
 
-//     console.log("asdas");
+function editUserInfo() {
+    //Enable the form fields
+    document.getElementById('personalInfoFields').disabled = false;
+}
 
-//     var texts = document.getElementsByClassName("navbar");
+function saveUserInfo() {
+    userName = document.getElementById('nameInput').value;
+    userEmail = document.getElementById('emailInput').value;
+    userWork = document.getElementById('workInput').value;
 
-//     console.log(texts);
+    currentUser.update({
+            name: userName,
+            email: userEmail,
+            work: userWork
+        })
+        .then(() => {
+            console.log("Document successfully updated!");
+        })
 
-//     if (!document.getElementById("settingsNav").classList.contains('userColorBlue') && e.getStateChange() == ItemEvent.SELECTED) {
-//         document.getElementById("settingsNav").classList.remove('userColorGreen','userColorPurple');
-//         document.getElementById("settingsNav").classList.add('userColorBlue');
-//     }
-//     if (!document.getElementById("settingsNav").classList.contains('userColorGreen') && document.getElementById('ColorGreen').checked) {
-//         document.getElementById("settingsNav").classList.remove('userColorBlue','userColorPurple');
-//         document.getElementById("settingsNav").classList.add('userColorGreen');
-//     }
-//     if (!document.getElementById("settingsNav").classList.contains('userColorPurple') && selectedValue == "Purple") {
-//         document.getElementById("settingsNav").classList.remove('userColorBlue','userColorGreen');
-//         document.getElementById("settingsNav").classList.add('userColorPurple');
-//     }
-
-// }
-
-// myFunction()
+    
+    //Enable the form fields
+    document.getElementById('personalInfoFields').disabled = true;
+}

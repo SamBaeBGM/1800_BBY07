@@ -29,7 +29,7 @@
                 <div class="collapse navbar-collapse" id="navbarsExample01">
                     <ul class="navbar-nav me-auto mb-2">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Profile</a>
+                            <a class="nav-link active" aria-current="page" href="settings.html">Settings</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="index.html">Sign out</a>
@@ -71,59 +71,65 @@
     </div>
 
     <div class="container text-body">
-        <h4 class="display-7 "> <u>Something:</u></h4>
+        <h4 class="display-7 "> <u>Profile:</u></h4>
         <br>
         <div class="list-group">
-            <label class="list-group-item">
-                <div>
-                    <input type="radio" id="option1" name="drone" value="option1">
-                    <label for="option1">option1</label>
+            <form>
+                <fieldset class="mb-3" id="personalInfoFields" disabled>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" id="emailInput" class="form-control" placeholder="Enter new email">
+                    </div>
+                    <div class="form-group">
+                        <label>Work Place</label>
+                        <input type="text" id="workInput" class="form-control" placeholder="Enter your Work Place">
+                    </div>
+                </fieldset>
+                <div class="d-flex justify-content-end mt-5">
+                    <button type="button" class="btn btn-secondary" onclick="editUserInfo()">Edit</button>
+                    <span style="width: 10px"></span>
+                    <button type="button" class="btn btn-info" onclick="saveUserInfo()">Save</button>
                 </div>
-                <div>
-                    <input type="radio" id="option2" name="drone" value="option2">
-                    <label for="option2">option2</label>
-                </div>
-            </label>
+            </form>
         </div>
-        <br>
-        <br>
-    </div>
-    <div class="container text-center">
-        <br>
-        <br>
-        <br>
-        <br>
+        <div class="container text-center">
+            <br>
+            <br>
+            <br>
+            <br>
 
-    </div>
-
-            <!-- Optional styles and scripts of your own -->
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link type="text/css" rel="stylesheet" href="styles/my_style.css">
-        <link type="text/css" rel="stylesheet" href="styles/calendar.css">
-        <link href="images/pigeon.jpeg" rel="icon" type="image/x-icon" />
-        <script src="./scripts/my_script.js"></script>
-        <script src="scripts/remindercreation.js"></script>
-        <script src="scripts/calendar.js"></script>
-    
-    
+        </div>
         <!-- Bootstrap FirebaseUI CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
-        
+        <link type="text/css" rel="stylesheet"
+            href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+
         <!-- Bootstarp script -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
-        </script>
+            </script>
         <!-- Firebase 8 CDNs-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
         <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-    
+
         <!-- Link to the api keys for your firebase project -->
         <script src="scripts/firebaseBBY07.js"></script>
+
+        <!-- Optional styles and scripts of your own -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link type="text/css" rel="stylesheet" href="styles/my_style.css">
+        <link type="text/css" rel="stylesheet" href="styles/calendar.css">
+        <link href="images/pigeon.jpeg" rel="icon" type="image/x-icon" />
+        <script src="./scripts/my_script.js"></script>
+        <script src="scripts/calendar.js"></script>
 
 </body>
 
