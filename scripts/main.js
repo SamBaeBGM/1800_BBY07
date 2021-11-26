@@ -184,13 +184,17 @@ function saveUserInfo() {
   document.getElementById("personalInfoFields").disabled = true;
 }
 
+const todoList = document.createElement("table");
+
 function read_display_Quote() {
   db.collection("reminders")
     .doc("reminder")
     .onSnapshot((reminderDoc) => {
       console.log("current document data: " + reminderDoc.data());
-      document.getElementsByClassName("task").innerHTML =
-        reminderDoc.data().task;
+
+      var something = reminderDoc.data().task;
+
+      target.innerHTML += template;
     });
 }
 read_display_Quote();
