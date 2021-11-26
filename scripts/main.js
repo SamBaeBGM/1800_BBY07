@@ -31,17 +31,25 @@ window.onload = () => {
   let todoListData = [];
   // let todo = [];
   function databaseTask() {
-    db.collection("reminders")
-      .doc("reminder")
-      .onSnapshot((reminderDoc) => {
-        console.log("current document data: " + reminderDoc.data().task);
-        todoListData.push(reminderDoc.data().task);
-        makeList(todos, todoListData);
-        let todo = document.querySelectorAll(".todo");
-        todoClickEvent(todo, todoListData);
-      });
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        const all = db
+          .collection("users")
+          .doc(user.uid)
+          .collection("reminders")
+          .doc("reminder");
+
+        all.onSnapshot((doc) => {
+          console.log("current document data: " + doc.data().task);
+          todoListData.push(doc.data().task);
+          makeList(todos, todoListData);
+          // let todo = document.querySelectorAll(".todo");
+          // todoClickEvent(todo, todoListData);
+        });
+      }
+    });
   }
-  databaseTask()
+  databaseTask();
   // put input in the data
 
   // get input
@@ -55,7 +63,7 @@ window.onload = () => {
 
   // put input in the data
   inputSumbitBtn.onclick = function () {
-    read_display_Quote()
+    let v = 0;
     if (inputValue == undefined || inputValue == "") {
       alert("ERROR, Cannot enter the task blank!");
     } else {
@@ -65,7 +73,14 @@ window.onload = () => {
       makeList(todos, todoListData);
       let todo = document.querySelectorAll(".todo");
       todoClickEvent(todo, todoListData);
+      v++;
     }
+
+    firebase.auth().onAuthStateChanged(function (user) {
+      db.collection("users").doc(user.uid).collection("reminders").add({
+        task: todoListData[v],
+      });
+    });
   };
   removeCheckedBtn.addEventListener("click", function () {
     //console.log(todoListData);
@@ -92,110 +107,108 @@ window.onload = () => {
     todoListData = [];
   };
 
-
-// Creation of list template
-function makeList(target, data) {
-  let targetChild = document.querySelectorAll(".todo");
-  for (let child of targetChild) {
-    target.removeChild(child);
-  }
-  for (let i = 0; i < data.length; i++) {
-    let template = `<li class="todo list-group-item col-xs-12" style="width:100%">
+  // Creation of list template
+  function makeList(target, data) {
+    let targetChild = document.querySelectorAll(".todo");
+    for (let child of targetChild) {
+      target.removeChild(child);
+    }
+    for (let i = 0; i < data.length; i++) {
+      let template = `<li class="todo list-group-item col-xs-12" style="width:100%">
       <input type="checkbox" class="checkbox-inline" style="margin:0;">
       <b>${data[i]}</b>
       <span class="delete">Remove</span>
       <span class="edit">Edit</span>
       </li>`;
-    target.innerHTML += template;
+      target.innerHTML += template;
+    }
   }
-}
 
-// The style changed after the check boxes are clicked.
-function todoClickEvent(target, data) {
-  for (let i = 0; i < target.length; i++) {
-    // console.log(target[i].childNodes)
-    //Style change if the check box is clicked or not.
-    target[i].childNodes[1].addEventListener("click", function () {
-      if (this.parentNode.classList.value.indexOf("checked") >= 0) {
-        this.parentNode.classList.remove("checked");
-        this.parentNode.style.color = "#000";
-        this.parentNode.style.textDecoration = "none";
-      } else {
-        this.parentNode.classList.add("checked");
-        this.parentNode.style.color = "red";
-        this.parentNode.style.textDecoration = "line-through";
-      }
-    });
-    // Delete function
-    target[i].childNodes[5].addEventListener("click", function () {
-      this.parentNode.remove();
-      data.splice(i, 1);
-      target = document.querySelectorAll(".todo");
-    });
-    // Edit function
-    target[i].childNodes[7].addEventListener("click", function () {
-      var prompt = window.prompt("Please input your edited task.");
-      if (prompt.length > 0) {
-        this.parentNode.childNodes[3].innerHTML = prompt;
-        data[i] = prompt;
-      }
-    });
-  }
-}
-
-var currentUser;
-var userReminders;
-
-// This function populates user info for settings page.
-function populateInfo() {
-  firebase.auth().onAuthStateChanged((user) => {
-    // Check if user is signed in:
-    if (user) {
-      //go to the correct user document by referencing to the user uid
-      currentUser = db.collection("users").doc(user.uid);
-      userReminders = db.collection("reminders").doc(user.uid);
-      console.log(userReminders);
-      //get the document for current user.
-      currentUser.get().then((userDoc) => {
-        //get the data fields of the user
-        var userName = userDoc.data().name;
-        var userWork = userDoc.data().work;
-
-        //if the data fields are not empty, then write them in to the form.
-        if (userName != null) {
-          document.getElementById("nameInput").value = userName;
-        }
-        if (userWork != null) {
-          document.getElementById("workInput").value = userWork;
+  // The style changed after the check boxes are clicked.
+  function todoClickEvent(target, data) {
+    for (let i = 0; i < target.length; i++) {
+      // console.log(target[i].childNodes)
+      //Style change if the check box is clicked or not.
+      target[i].childNodes[1].addEventListener("click", function () {
+        if (this.parentNode.classList.value.indexOf("checked") >= 0) {
+          this.parentNode.classList.remove("checked");
+          this.parentNode.style.color = "#000";
+          this.parentNode.style.textDecoration = "none";
+        } else {
+          this.parentNode.classList.add("checked");
+          this.parentNode.style.color = "red";
+          this.parentNode.style.textDecoration = "line-through";
         }
       });
-    } else {
-      console.log("no user logged in.");
+      // Delete function
+      target[i].childNodes[5].addEventListener("click", function () {
+        this.parentNode.remove();
+        data.splice(i, 1);
+        target = document.querySelectorAll(".todo");
+      });
+      // Edit function
+      target[i].childNodes[7].addEventListener("click", function () {
+        var prompt = window.prompt("Please input your edited task.");
+        if (prompt.length > 0) {
+          this.parentNode.childNodes[3].innerHTML = prompt;
+          data[i] = prompt;
+        }
+      });
     }
-  });
-}
-// populateInfo();
+  }
 
-function editUserInfo() {
-  //Enable the form fields
-  document.getElementById("personalInfoFields").disabled = false;
-}
+  //   var currentUser;
+  //   var userReminders;
 
-function saveUserInfo() {
-  userName = document.getElementById("nameInput").value;
-  userWork = document.getElementById("workInput").value;
+  //   // This function populates user info for settings page.
+  //   function populateInfo() {
+  //     firebase.auth().onAuthStateChanged((user) => {
+  //       // Check if user is signed in:
+  //       if (user) {
+  //         //go to the correct user document by referencing to the user uid
+  //         currentUser = db.collection("users").doc(user.uid);
+  //         userReminders = db.collection("reminders").doc(user.uid);
+  //         console.log(userReminders);
+  //         //get the document for current user.
+  //         currentUser.get().then((userDoc) => {
+  //           //get the data fields of the user
+  //           var userName = userDoc.data().name;
+  //           var userWork = userDoc.data().work;
 
-  currentUser
-    .update({
-      name: userName,
-      work: userWork,
-    })
-    .then(() => {
-      console.log("Document successfully updated!");
-    });
+  //           //if the data fields are not empty, then write them in to the form.
+  //           if (userName != null) {
+  //             document.getElementById("nameInput").value = userName;
+  //           }
+  //           if (userWork != null) {
+  //             document.getElementById("workInput").value = userWork;
+  //           }
+  //         });
+  //       } else {
+  //         console.log("no user logged in.");
+  //       }
+  //     });
+  //   }
+  //   // populateInfo();
 
-  //Enable the form fields
-  document.getElementById("personalInfoFields").disabled = true;
-}
+  //   function editUserInfo() {
+  //     //Enable the form fields
+  //     document.getElementById("personalInfoFields").disabled = false;
+  //   }
 
-}
+  //   function saveUserInfo() {
+  //     userName = document.getElementById("nameInput").value;
+  //     userWork = document.getElementById("workInput").value;
+
+  //     currentUser
+  //       .update({
+  //         name: userName,
+  //         work: userWork,
+  //       })
+  //       .then(() => {
+  //         console.log("Document successfully updated!");
+  //       });
+
+  //     //Enable the form fields
+  //     document.getElementById("personalInfoFields").disabled = true;
+  //   }
+};
