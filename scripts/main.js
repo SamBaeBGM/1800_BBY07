@@ -40,7 +40,6 @@ window.onload = () => {
           .doc("reminder");
 
         all.onSnapshot((doc) => {
-          console.log("current document data: " + doc.data().task);
           todoListData.push(doc.data().task);
           makeList(todos, todoListData);
           // let todo = document.querySelectorAll(".todo");
@@ -62,8 +61,8 @@ window.onload = () => {
   });
 
   // put input in the data
+  let iterator = 0;
   inputSumbitBtn.onclick = function () {
-    let v = 0;
     if (inputValue == undefined || inputValue == "") {
       alert("ERROR, Cannot enter the task blank!");
     } else {
@@ -73,12 +72,12 @@ window.onload = () => {
       makeList(todos, todoListData);
       let todo = document.querySelectorAll(".todo");
       todoClickEvent(todo, todoListData);
-      v++;
+      iterator++;
     }
 
     firebase.auth().onAuthStateChanged(function (user) {
       db.collection("users").doc(user.uid).collection("reminders").add({
-        task: todoListData[v],
+        task: todoListData[iterator],
       });
     });
   };
