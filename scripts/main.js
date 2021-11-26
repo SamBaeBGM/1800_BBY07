@@ -92,70 +92,12 @@ function makeList(target, data) {
       <span class="delete">Remove</span>
       <span class="edit">Edit</span>
       </li>`;
-<<<<<<< HEAD
-        target.innerHTML += template;
-    }
-=======
     target.innerHTML += template;
   }
->>>>>>> ac9047201c27c41542a42d2e4629b99497f19357
 }
 
 // The style changed after the check boxes are clicked.
 function todoClickEvent(target, data) {
-<<<<<<< HEAD
-
-    for (let i = 0; i < target.length; i++) {
-        // console.log(target[i].childNodes)
-        //Style change if the check box is clicked or not.
-        target[i].childNodes[1].addEventListener('click', function () {
-            if (this.parentNode.classList.value.indexOf("checked") >= 0) {
-                this.parentNode.classList.remove("checked");
-                this.parentNode.style.color = "#000";
-                this.parentNode.style.textDecoration = "none";
-            } else {
-                this.parentNode.classList.add("checked");
-                this.parentNode.style.color = "red";
-                this.parentNode.style.textDecoration = "line-through";
-            }
-        });
-        // Delete function
-        target[i].childNodes[5].addEventListener('click', function () {
-            this.parentNode.remove();
-            data.splice(i, 1);
-            target = document.querySelectorAll('.todo');
-
-        });
-        // Edit function
-        target[i].childNodes[7].addEventListener('click', function () {
-            var prompt = window.prompt("Please input your edited task.");
-            if (prompt.length > 0) {
-                this.parentNode.childNodes[3].innerHTML = prompt;
-                data[i] = prompt;
-            }
-        });
-    }
-};
-
-
-db.collection("users").doc(user.uid)
-    .add({
-        details: "take out garbage",
-        date_created: get server time //premade function to get computers time
-    })
-displayCards(user.uid){
-    db.collection("users").doc(user.uid).collection("reminders")
-        .orderBy("date_created")
-        .limit(10)
-        .get(function (snap) {
-            snap.forEach(function (doc) {
-                details = doc.data().details;
-                //create the card from template, attach details/info, attch to dom
-            }
-           
-     }
-}
-=======
   for (let i = 0; i < target.length; i++) {
     // console.log(target[i].childNodes)
     //Style change if the check box is clicked or not.
@@ -247,9 +189,9 @@ function read_display_Quote() {
     .doc("reminder")
     .onSnapshot((reminderDoc) => {
       console.log("current document data: " + reminderDoc.data());
-      document.getElementsByClassName("task").innerHTML =
+      document.getElementById("todos").innerHTML =
         reminderDoc.data().task;
+        makeList(todos, reminderDoc.data().task)
     });
 }
 read_display_Quote();
->>>>>>> ac9047201c27c41542a42d2e4629b99497f19357
