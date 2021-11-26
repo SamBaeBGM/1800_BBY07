@@ -30,6 +30,19 @@ window.onload = () => {
   let inputValue;
   let todoListData = [];
   // let todo = [];
+  function databaseTask() {
+    db.collection("reminders")
+      .doc("reminder")
+      .onSnapshot((reminderDoc) => {
+        console.log("current document data: " + reminderDoc.data().task);
+        todoListData.push(reminderDoc.data().task);
+        makeList(todos, todoListData);
+        let todo = document.querySelectorAll(".todo");
+        todoClickEvent(todo, todoListData);
+      });
+  }
+  databaseTask()
+  // put input in the data
 
   // get input
   checkInput.addEventListener("keyup", function (event) {
@@ -42,6 +55,7 @@ window.onload = () => {
 
   // put input in the data
   inputSumbitBtn.onclick = function () {
+    read_display_Quote()
     if (inputValue == undefined || inputValue == "") {
       alert("ERROR, Cannot enter the task blank!");
     } else {
@@ -77,7 +91,7 @@ window.onload = () => {
     }
     todoListData = [];
   };
-};
+
 
 // Creation of list template
 function makeList(target, data) {
@@ -184,17 +198,4 @@ function saveUserInfo() {
   document.getElementById("personalInfoFields").disabled = true;
 }
 
-const todoList = document.createElement("table");
-
-function read_display_Quote() {
-  db.collection("reminders")
-    .doc("reminder")
-    .onSnapshot((reminderDoc) => {
-      console.log("current document data: " + reminderDoc.data());
-
-      var something = reminderDoc.data().task;
-
-      target.innerHTML += template;
-    });
 }
-read_display_Quote();
