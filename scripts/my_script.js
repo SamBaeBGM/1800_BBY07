@@ -291,6 +291,7 @@ function saveUserInfo() {
             work: userWork
         })
         .then(() => {
+            console.log(userWork);
             console.log("Document successfully updated!");
         })
 
