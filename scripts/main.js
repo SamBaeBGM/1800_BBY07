@@ -33,17 +33,14 @@ window.onload = () => {
   function databaseTask() {
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
-        const all = db
-          .collection("users")
-          .doc(user.uid)
-          .collection("reminders")
-          .doc("reminder");
+        const all = db.collection("users").doc(user.uid).collection("reminders").doc("reminder");
 
-        all.onSnapshot((doc) => {
-          todoListData.push(doc.data().task);
+        db.collection("users").doc(user.uid).collection("reminders").get().then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            // doc.data() is never undefined for query doc snapshots
+            todoListData.push(doc.data().task);
+          });
           makeList(todos, todoListData);
-          // let todo = document.querySelectorAll(".todo");
-          // todoClickEvent(todo, todoListData);
         });
       }
     });
