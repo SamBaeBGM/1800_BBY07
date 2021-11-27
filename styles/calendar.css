@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
 
-.calendar-container {
-
-  
-}
-
 .calendar-container ul {
   list-style-type: none;
 }
@@ -40,6 +35,15 @@
   margin-right: 25px;
 }
 
+#days li:hover{
+  background-color: rgb(255, 229, 80);
+  
+}
+
+#calendar-year{
+  text-shadow: 3px 3px 3px #f1f1f180;
+}
+
 .weekdays {
   margin: 0;
   padding: 10px 0;
@@ -70,9 +74,15 @@
 
 .lightgrey{
 	color: #777;
+  border: none;
 }
 .darkgrey{
 	color:black; 
+  border: none;
+}
+
+.mark_cal{
+  border: 2px solid black;
 }
 
 /* Highlight the "current" day */
