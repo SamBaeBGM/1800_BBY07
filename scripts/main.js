@@ -82,7 +82,6 @@ window.onload = () => {
       });
       todoListData.push(inputValue);
       checkInput.value = "";
-      inputValue = undefined;
       makeList(todos, todoListData);
       let todo = document.querySelectorAll(".todo");
       todoClickEvent(todo, todoListData);
