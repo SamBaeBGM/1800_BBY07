@@ -7,16 +7,11 @@ body{
   font-size: large;
 }
  
-/* The color change selected by the user */
-.userColorPurple{
-  background-color: rgb(102, 51, 153);
-}
+/* The color */
 .userColorBlue{
-  background-color: rgb(0, 70, 132);
+  background-color: rgb(175, 111, 27);
 }
-.userColorGreen{
-  background-color: #0d6d38;
-}
+
 .todo-inputBox {
   margin: 15px 0;
 }
