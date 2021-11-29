@@ -23,13 +23,14 @@ body{
   margin-top: 5%;
   padding-left: 5%;
   padding-right: 5%;
+  height: 450px;
+  overflow-y: scroll;
 }
 
 /* This is the to do dashboard */
 .todosBox {
   font-family: 'lato', sans-serif;
   background-color: #eee;
-  height: 100%;
   border-radius: 20px;
   padding-top: 3%;
   padding-bottom: 15%;
