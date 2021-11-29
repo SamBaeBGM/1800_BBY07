@@ -30,7 +30,7 @@ var next = document.getElementById("next");
 var ctitle = document.getElementById("calendar-month");
 var cyear = document.getElementById("calendar-year");
 
-// 初始化30天的ul及li
+// intialize ul and li
 var oLi = holder.getElementsByTagName("li");
 var oDayMsg = document.getElementById("days_msg");
 // var oLi.length=0;
@@ -99,7 +99,7 @@ function refreshDate() {
 
       // myclass = "darkgrey";
     } else {
-      oLi[j].className = "lightgrey";
+      oLi[j].className = "darkgrey";
 
       // myclass = " class='darkgrey'";
     }
@@ -109,7 +109,7 @@ function refreshDate() {
     // str += "<li"+myclass+">"+i+"</li>";
   }
   //show days, month, and year
-  // holder.innerHTML = str;
+ // holder.innerHTML = str;
   ctitle.innerHTML = month_name[my_month];
   cyear.innerHTML = my_year;
   for (var i = 0; i < 3; i++) {
@@ -158,7 +158,7 @@ next.onclick = function () {
   }
   refreshDate();
 };
-//日志
+//events
 function myDaysClk(liNum) {
   // var li_day=oLi[liNum].innerHTML;
   // var daysMsg="meeting";
