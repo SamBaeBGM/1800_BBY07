@@ -144,6 +144,8 @@ window.onload = () => {
           this.parentNode.classList.add("checked");
           this.parentNode.style.color = "red";
           this.parentNode.style.textDecoration = "line-through";
+          const ding = new Audio("./audio/ding.wav");
+          ding.play();
         }
       });
       // Delete function

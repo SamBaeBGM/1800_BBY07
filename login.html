@@ -17,11 +17,10 @@
     <!-------------------------------------->
     <!-- Header Navigation Bar -->
     <main>
-        <nav class="navbar navbar-dark userColorBlue" aria-label="First navbar example">
+        <nav class="navbar navbar-dark userColor" aria-label="First navbar example">
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.html">
-                    <img src="./images/p3.png" alt="" width="50" height="50"
-                        class="d-inline-block align-text-center">
+                    <img src="./images/p3.png" alt="" width="50" height="50" class="d-inline-block align-text-center">
                     Pigeon
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -59,35 +58,34 @@
         <div id="loader">Loading...</div>
     </div>
 
-        <!-- Bootstrap FirebaseUI CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link type="text/css" rel="stylesheet"
-            href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+    <!-- Bootstrap FirebaseUI CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
 
-        <!-- Bootstarp script -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
-            </script>
-        <!-- Firebase 8 CDNs-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <!-- Bootstarp script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+        </script>
+    <!-- Firebase 8 CDNs-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
 
-        <!-- Link to the api keys for your firebase project -->
-        <script src="scripts/firebaseBBY07.js"></script>
+    <!-- Link to the api keys for your firebase project -->
+    <script src="scripts/firebaseBBY07.js"></script>
 
-        <!-- Optional styles and scripts of your own -->
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link type="text/css" rel="stylesheet" href="styles/my_style.css">
-        <link type="text/css" rel="stylesheet" href="styles/calendar.css">
-        <link href="images/pigeon.jpeg" rel="icon" type="image/x-icon" />
-        <script src="./scripts/my_script.js"></script>
-        <script src="scripts/calendar.js"></script>
+    <!-- Optional styles and scripts of your own -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link type="text/css" rel="stylesheet" href="styles/my_style.css">
+    <link type="text/css" rel="stylesheet" href="styles/calendar.css">
+    <link href="images/pigeon.jpeg" rel="icon" type="image/x-icon" />
+    <script src="./scripts/my_script.js"></script>
+    <script src="scripts/calendar.js"></script>
 
-    
+
     <script>
         // Initialize the FirebaseUI Widget using Firebase.
         var ui = new firebaseui.auth.AuthUI(firebase.auth());
@@ -109,19 +107,19 @@
 
                     if (authResult.additionalUserInfo.isNewUser) { //if new user
                         db.collection("users").doc(user.uid).set({ //write to firestore
-                                name: user.displayName, //"users" collection
-                                email: user.email //with authenticated user's ID (user.uid)
-                            }).then(function () {
-                                console.log("New user added to firestore");
-                            })
+                            name: user.displayName, //"users" collection
+                            email: user.email //with authenticated user's ID (user.uid)
+                        }).then(function () {
+                            console.log("New user added to firestore");
+                        })
                             .catch(function (error) {
                                 console.log("Error adding new user: " + error);
                             });
-                            db.collection("users").doc(user.uid).collection("reminders").add({
-                            }).then(function () {
-                                console.log("subcollection added");
-                                window.location.assign("main.html"); //re-direct to main.html after signup
-                            })
+                        db.collection("users").doc(user.uid).collection("reminders").add({
+                        }).then(function () {
+                            console.log("subcollection added");
+                            window.location.assign("main.html"); //re-direct to main.html after signup
+                        })
                             .catch(function (error) {
                                 console.log("error adding subcollection");
                             });
@@ -157,7 +155,7 @@
         // The start method will wait until the DOM is loaded.
         ui.start('#firebaseui-auth-container', uiConfig);
     </script>
-    
+
 </body>
 
 </html>
