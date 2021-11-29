@@ -12,9 +12,6 @@ body{
   background-color: #fe954a;
 }
 
-.userColor li {
-  border-radius: 20px;
-}
 
 .todo-inputBox {
   margin: 15px 0;

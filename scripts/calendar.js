@@ -17,7 +17,6 @@ var month_name = [
 ];
 
 var my_cal = [
-  [2021, "December", 2, "do something you lazy bum."],
   [2021, "October", 1, "party"],
   [2021, "November", 2, "movie"],
 ];
