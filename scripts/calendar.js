@@ -106,7 +106,7 @@ function refreshDate() {
 
 
 
-  oDayMsg.innerHTML = mark_cal;//ctitle.innerHTML;
+  //oDayMsg.innerHTML = mark_cal;//ctitle.innerHTML;
   // alert(my_cal[2][0]+my_year+my_cal[2][1]+month_name[my_month]+my_cal[2][2]+my_cal[2][3]);
 }
 
