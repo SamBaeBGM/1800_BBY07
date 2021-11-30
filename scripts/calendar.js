@@ -91,7 +91,7 @@ function refreshDate() {
   ctitle.innerHTML = month_name[my_month];
   cyear.innerHTML = my_year;
   for (var i = 0; i < 3; i++) {
-    if (my_cal[i][0] === my_year && my_cal[i][1] === month_name[my_month]) {
+    if (my_cal[i][0] == my_year && my_cal[i][1] == month_name[my_month]) {
       mark_cal = my_cal[i][2];
       mark_cal_msg = my_cal[i][3];
       oLi[mark_cal + firstDay - 2].className = "mark_cal";
