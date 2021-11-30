@@ -33,12 +33,6 @@ window.onload = () => {
   function databaseTask() {
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
-        const all = db
-          .collection("users")
-          .doc(user.uid)
-          .collection("reminders")
-          .doc("reminder");
-
         db.collection("users")
           .doc(user.uid)
           .collection("reminders")
@@ -48,9 +42,14 @@ window.onload = () => {
               // doc.data() is never undefined for query doc snapshots
               todoListData.push(doc.data().task);
             });
-            makeList(todos, todoListData);
-            let todo = document.querySelectorAll(".todo");
-            todoClickEvent(todo, todoListData);
+            if (todoListData === undefined || todoListData == 0) {
+              console.log("no task yet");
+            } else {
+              makeList(todos, todoListData);
+              let todo = document.querySelectorAll(".todo");
+              todoClickEvent(todo, todoListData);
+              console.log("it worked");
+            }
           });
       }
     });
@@ -159,7 +158,21 @@ window.onload = () => {
         var prompt = window.prompt("Please input your edited task.");
         if (prompt.length > 0) {
           this.parentNode.childNodes[3].innerHTML = prompt;
-          data[i] = prompt;
+          //data[i] = prompt;
+
+          firebase.auth().onAuthStateChanged(function (user) {
+            db.collection("users")
+              .doc(user.uid)
+              .collection("reminders")
+              .get()
+              .then(function (querySnapshot) {
+                querySnapshot.forEach(function (doc) {
+                  if (doc.data().task == todoListData[i]) {
+                    todoListData.push(doc.ref.update({ task: prompt }));
+                  }
+                });
+              });
+          });
         }
       });
     }

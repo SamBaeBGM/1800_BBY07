@@ -17,14 +17,17 @@ body{
   margin: 15px 0;
 }
 
+.list-group {
+  overflow-y: scroll;
+  height: 200px;
+}
 
 #dashboard {
   width: 100%;
   margin-top: 5%;
   padding-left: 5%;
   padding-right: 5%;
-  height: 450px;
-  overflow-y: scroll;
+  height: 500px;
 }
 
 /* This is the to do dashboard */
