@@ -49,7 +49,7 @@ window.onload = () => {
               makeList(todos, todoListData);
               let todo = document.querySelectorAll(".todo");
               todoClickEvent(todo, todoListData);
-              console.log("it worked");
+              //console.log("it loaded");
             }
           });
       }
@@ -75,10 +75,13 @@ window.onload = () => {
     } else {
       console.log(inputValue);
       firebase.auth().onAuthStateChanged(function (user) {
-        console.log(user.uid);
-        db.collection("users").doc(user.uid).collection("reminders").add({
-          task: inputValue,
-        });
+        db.collection("users")
+          .doc(user.uid)
+          .collection("reminders")
+          .doc(inputValue)
+          .set({
+            task: inputValue,
+          });
       });
       todoListData.push(inputValue);
       checkInput.value = "";
@@ -88,6 +91,7 @@ window.onload = () => {
       iterator++;
     }
   };
+
   removeCheckedBtn.addEventListener("click", function () {
     //console.log(todoListData);
     let allTodos = document.querySelectorAll(".todo");
@@ -149,11 +153,30 @@ window.onload = () => {
           ding.play();
         }
       });
+
       // Delete function
       target[i].childNodes[5].addEventListener("click", function () {
         this.parentNode.remove();
         data.splice(i, 1);
         target = document.querySelectorAll(".todo");
+        // firebase.auth().onAuthStateChanged(function (user) {
+        //   db.collection("users")
+        //     .doc(user.uid)
+        //     .collection("reminders")
+        //     .get()
+        //     .then(function (querySnapshot) {
+        //       querySnapshot.forEach(function (doc) {
+        //         if (doc.data().task == todoListData[i]) {
+        //           db.collection("users")
+        //             .doc(user.uid)
+        //             .collection("reminders")
+        //             .doc(doc.data().task)
+        //             .delete();
+        //           console.log("deleted task");
+        //         }
+        //       });
+        //     });
+        // });
       });
       // Edit function
       target[i].childNodes[7].addEventListener("click", function () {
