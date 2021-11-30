@@ -29,6 +29,7 @@ window.onload = () => {
   // todo related data store
   let inputValue;
   let todoListData = [];
+
   // let todo = [];
   function databaseTask() {
     firebase.auth().onAuthStateChanged(function (user) {
@@ -118,6 +119,7 @@ window.onload = () => {
     for (let child of targetChild) {
       target.removeChild(child);
     }
+
     for (let i = 0; i < data.length; i++) {
       let template = `<li class="todo list-group-item col-xs-12" style="width:100%">
       <input type="checkbox" class="checkbox-inline" style="margin:0;">
