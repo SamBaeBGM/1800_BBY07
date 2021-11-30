@@ -1,24 +1,12 @@
 // two days for leap years and not leap years
 var month_olympic = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 var month_normal = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-var month_name = [
-  "January",
-  "Febrary",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "Auguest",
-  "September",
-  "October",
-  "November",
-  "December",
-];
+var month_name = ["January", "Febrary", "March", "April", "May", "June", "July", "Auguest", "September", "October", "November", "December"];
 
 var my_cal = [
-  [2021, "October", 1, "party"],
-  [2021, "November", 2, "movie"],
+  [2021, 'September', 2, 'movie.'],
+  [2021, 'September', 1, 'party'],
+  [2022, 'January', 1, 'family meeting']
 ];
 var mark_cal = "";
 var mark_cal_msg = "";
@@ -44,16 +32,16 @@ var my_day = my_date.getDate();
 //get what day is it for the first day of that month
 function dayStart(month, year) {
   var tmpDate = new Date(year, month, 1);
-  return tmpDate.getDay();
+  return (tmpDate.getDay());
 }
 
 //calculate if it is a leap year
 function daysMonth(month, year) {
   var tmp = year % 4;
   if (tmp == 0) {
-    return month_olympic[month];
+    return (month_olympic[month]);
   } else {
-    return month_normal[month];
+    return (month_normal[month]);
   }
 }
 
@@ -69,7 +57,7 @@ function refreshDate() {
   var myclass;
 
   // the day before the first day should be empty
-  // for(var i=1; i<firstDay; i++){
+  // for(var i=1; i<firstDay; i++){ 
   // str += "<li></li>";
   // }
   for (var i = 0; i < 37; i++) {
@@ -81,20 +69,10 @@ function refreshDate() {
   //today is current menu colour
   for (var i = 1; i <= totalDay; i++) {
     var j = i + firstDay - 2;
-    if (
-      (i < my_day &&
-        my_year == my_date.getFullYear() &&
-        my_month == my_date.getMonth()) ||
-      my_year < my_date.getFullYear() ||
-      (my_year == my_date.getFullYear() && my_month < my_date.getMonth())
-    ) {
+    if ((i < my_day && my_year == my_date.getFullYear() && my_month == my_date.getMonth()) || my_year < my_date.getFullYear() || (my_year == my_date.getFullYear() && my_month < my_date.getMonth())) {
       oLi[j].className = "lightgrey";
       // myclass = " class='lightgrey'";
-    } else if (
-      i == my_day &&
-      my_year == my_date.getFullYear() &&
-      my_month == my_date.getMonth()
-    ) {
+    } else if (i == my_day && my_year == my_date.getFullYear() && my_month == my_date.getMonth()) {
       oLi[j].className = "userColorDay";
 
       // myclass = "darkgrey";
@@ -109,7 +87,7 @@ function refreshDate() {
     // str += "<li"+myclass+">"+i+"</li>";
   }
   //show days, month, and year
- // holder.innerHTML = str;
+  // holder.innerHTML = str;
   ctitle.innerHTML = month_name[my_month];
   cyear.innerHTML = my_year;
   for (var i = 0; i < 3; i++) {
@@ -122,10 +100,13 @@ function refreshDate() {
     // else{
     // oLi[my_cal[i][2]+firstDay-2].mark=false;
     // }
+
   }
   // alert(mark_cal+','+mark_cal_msg+firstDay+oLi[8].mark);
 
-  oDayMsg.innerHTML = mark_cal; //ctitle.innerHTML;
+
+
+  oDayMsg.innerHTML = mark_cal;//ctitle.innerHTML;
   // alert(my_cal[2][0]+my_year+my_cal[2][1]+month_name[my_month]+my_cal[2][2]+my_cal[2][3]);
 }
 
@@ -148,7 +129,8 @@ prev.onclick = function () {
     my_month = 11;
   }
   refreshDate();
-};
+
+}
 next.onclick = function () {
   // e.preventDefault();
   my_month++;
@@ -157,15 +139,17 @@ next.onclick = function () {
     my_month = 0;
   }
   refreshDate();
-};
-//events
+
+}
+//event
 function myDaysClk(liNum) {
   // var li_day=oLi[liNum].innerHTML;
   // var daysMsg="meeting";
 
   if (oLi[liNum].mark == true) {
     oDayMsg.innerHTML = mark_cal_msg;
-  } else {
+  }
+  else {
     oDayMsg.innerHTML = "";
   }
   // li_day;
@@ -173,47 +157,49 @@ function myDaysClk(liNum) {
   // alert(oLi[liNum].mark);
 }
 
+
 oLi[0].onmouseover = function () {
   myDaysClk(0);
-};
+}
 
 oLi[1].onmouseover = function () {
   myDaysClk(1);
-};
+}
 
 oLi[2].onmouseover = function () {
   myDaysClk(2);
-};
+}
 oLi[3].onmouseover = function () {
   myDaysClk(3);
-};
+}
 
 oLi[4].onmouseover = function () {
   myDaysClk(4);
-};
+}
 
 oLi[5].onmouseover = function () {
   myDaysClk(5);
-};
+}
 oLi[6].onmouseover = function () {
   myDaysClk(6);
-};
+}
 
 oLi[7].onmouseover = function () {
   myDaysClk(7);
-};
+}
 
 oLi[8].onmouseover = function () {
   myDaysClk(8);
-};
+}
 oLi[9].onmouseover = function () {
   myDaysClk(9);
-};
+}
 
 oLi[10].onmouseover = function () {
   myDaysClk(10);
-};
+}
 
 oLi[11].onmouseover = function () {
   myDaysClk(11);
-};
+}
+
