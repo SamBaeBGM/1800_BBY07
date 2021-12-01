@@ -46,6 +46,7 @@
     <div id="dashboard">
         <section class="todosBox container-fluid justify-content-center">
             <h1 class="dashboard-header"><b>Dashboard</b></h1>
+            <p>Welcome, <span id="name-goes-here"></span></p>
             <div class="thumbnail col-xs-6 col-xs-offset">
                 <div class="todo-inputBox input-group">
                     <input type="text" id="todo-input" class="form-control" placeholder="NEW TASK" minlength="1"
@@ -164,6 +165,32 @@
     <script src="./scripts/my_script.js"></script>
     <script src="scripts/calendar.js"></script>
     <script src="./scripts/main.js"></script>
+    <script>
+                function insertName() {
+            firebase.auth().onAuthStateChanged(user => {
+                // Check if user is signed in:
+                if (user) {
+                    // Do something for the current logged-in user here: 
+                    console.log(user.uid);
+                    //go to the correct user document by referencing to the user uid
+                    currentUser = db.collection("users").doc(user.uid);
+                    //get the document for current user.
+                    currentUser.get()
+                        .then(userDoc => {
+                            var user_Name = userDoc.data().name;
+                            console.log(user_Name);
+                            //method #1:  insert with html only
+                            document.getElementById("name-goes-here").innerText = user_Name;    //using javascript
+                            //method #2:  insert using jquery
+                            //$("#name-goes-here").text(user_Name); //using jquery
+                        })
+                } else {
+                    // No user is signed in.
+                }
+            });
+        }
+        insertName();
+    </script>
 </body>
 
 </html>
