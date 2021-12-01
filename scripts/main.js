@@ -49,7 +49,7 @@ window.onload = () => {
               makeList(todos, todoListData);
               let todo = document.querySelectorAll(".todo");
               todoClickEvent(todo, todoListData);
-              //console.log("it loaded");
+              console.log("it worked");
             }
           });
       }
@@ -75,13 +75,10 @@ window.onload = () => {
     } else {
       console.log(inputValue);
       firebase.auth().onAuthStateChanged(function (user) {
-        db.collection("users")
-          .doc(user.uid)
-          .collection("reminders")
-          .doc(inputValue)
-          .set({
-            task: inputValue,
-          });
+        console.log(user.uid);
+        db.collection("users").doc(user.uid).collection("reminders").add({
+          task: inputValue,
+        });
       });
       todoListData.push(inputValue);
       checkInput.value = "";
@@ -91,7 +88,6 @@ window.onload = () => {
       iterator++;
     }
   };
-
   removeCheckedBtn.addEventListener("click", function () {
     //console.log(todoListData);
     let allTodos = document.querySelectorAll(".todo");
@@ -99,6 +95,19 @@ window.onload = () => {
       if (allTodos[i].classList.value.indexOf("checked") > -1) {
         allTodos[i].remove();
       }
+      firebase.auth().onAuthStateChanged(function (user) {
+        db.collection("users")
+          .doc(user.uid)
+          .collection("reminders")
+          .get()
+          .then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+              if (!todoListData.includes(doc.data().task)) {
+                doc.ref.delete();
+              }
+            });
+          });
+      });
     }
 
     todoListData = [];
@@ -115,6 +124,18 @@ window.onload = () => {
       allTodos[i].remove();
     }
     todoListData = [];
+    // Delete function
+    firebase.auth().onAuthStateChanged(function (user) {
+      db.collection("users")
+        .doc(user.uid)
+        .collection("reminders")
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            doc.ref.delete();
+          });
+        });
+    });
   };
 
   // Creation of list template
@@ -154,30 +175,27 @@ window.onload = () => {
         }
       });
 
-      // Delete function
-      target[i].childNodes[5].addEventListener("click", function () {
-        this.parentNode.remove();
-        data.splice(i, 1);
-        target = document.querySelectorAll(".todo");
-        firebase.auth().onAuthStateChanged(function (user) {
-          db.collection("users")
-            .doc(user.uid)
-            .collection("reminders")
-            .get()
-            .then(function (querySnapshot) {
-              querySnapshot.forEach(function (doc) {
-                if (doc.data().task == todoListData[i]) {
-                  db.collection("users")
-                    .doc(user.uid)
-                    .collection("reminders")
-                    .doc("Take dog to walk")
-                    .delete();
-                  console.log("deleted task");
-                }
-              });
-            });
-        });
-      });
+      // // Delete function
+      // target[i].childNodes[5].addEventListener("click", function () {
+      //     this.parentNode.remove();
+      //     data.splice(i, 1);
+      //     target = document.querySelectorAll(".todo");
+
+      //     firebase.auth().onAuthStateChanged(function (user) {
+      //         db.collection("users")
+      //             .doc(user.uid)
+      //             .collection("reminders")
+      //             .get()
+      //             .then(function (querySnapshot) {
+      //                 querySnapshot.forEach(function (doc) {
+      //                     if (doc.data().task == todoListData[i]) {
+      //                         doc.ref.delete();
+      //                     }
+      //                 });
+      //             });
+      //     });
+      // });
+
       // Edit function
       target[i].childNodes[7].addEventListener("click", function () {
         var prompt = window.prompt("Please input your edited task.");
