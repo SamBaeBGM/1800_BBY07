@@ -159,24 +159,24 @@ window.onload = () => {
         this.parentNode.remove();
         data.splice(i, 1);
         target = document.querySelectorAll(".todo");
-        // firebase.auth().onAuthStateChanged(function (user) {
-        //   db.collection("users")
-        //     .doc(user.uid)
-        //     .collection("reminders")
-        //     .get()
-        //     .then(function (querySnapshot) {
-        //       querySnapshot.forEach(function (doc) {
-        //         if (doc.data().task == todoListData[i]) {
-        //           db.collection("users")
-        //             .doc(user.uid)
-        //             .collection("reminders")
-        //             .doc(doc.data().task)
-        //             .delete();
-        //           console.log("deleted task");
-        //         }
-        //       });
-        //     });
-        // });
+        firebase.auth().onAuthStateChanged(function (user) {
+          db.collection("users")
+            .doc(user.uid)
+            .collection("reminders")
+            .get()
+            .then(function (querySnapshot) {
+              querySnapshot.forEach(function (doc) {
+                if (doc.data().task == todoListData[i]) {
+                  db.collection("users")
+                    .doc(user.uid)
+                    .collection("reminders")
+                    .doc("Take dog to walk")
+                    .delete();
+                  console.log("deleted task");
+                }
+              });
+            });
+        });
       });
       // Edit function
       target[i].childNodes[7].addEventListener("click", function () {
