@@ -31,6 +31,7 @@ window.onload = () => {
   // todo related data store
   let inputValue;
   let todoListData = [];
+
   // let todo = [];
 
   function databaseTask() {
@@ -46,11 +47,18 @@ window.onload = () => {
             });
             if (todoListData === undefined || todoListData == 0) {
               console.log("no task yet");
+              todoListData = todoListData.filter(function (element) {
+                return element !== undefined;
+              });
             } else {
+              todoListData = todoListData.filter(function (element) {
+                return element !== undefined;
+              });
+              console.log(todoListData);
               makeList(todos, todoListData);
               let todo = document.querySelectorAll(".todo");
               todoClickEvent(todo, todoListData);
-              console.log("it worked");
+              //console.log("it worked");
             }
           });
       }
@@ -68,7 +76,6 @@ window.onload = () => {
   });
 
   //When the reminder is created and it is not empty, it will add the data to the firestore.
-  let iterator = 0;
   inputSumbitBtn.onclick = function () {
     if (inputValue == undefined || inputValue.trim() == "") {
       alert("ERROR, Cannot enter the task blank!");
@@ -85,7 +92,6 @@ window.onload = () => {
       makeList(todos, todoListData);
       let todo = document.querySelectorAll(".todo");
       todoClickEvent(todo, todoListData);
-      iterator++;
     }
   };
 

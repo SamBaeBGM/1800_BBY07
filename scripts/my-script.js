@@ -30,7 +30,6 @@ function populateInfo() {
     if (user) {
       //go to the correct user document by referencing to the user uid
       currentUser = db.collection("users").doc(user.uid);
-      userReminders = db.collection("reminders").doc(user.uid);
       //get the document for current user.
       currentUser.get().then((userDoc) => {
         //get the data fields of the user
