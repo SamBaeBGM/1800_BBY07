@@ -1,8 +1,9 @@
-// two days for leap years and not leap years
+// two version of days: one for leap years and one for not leap years
 var month_olympic = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 var month_normal = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 var month_name = ["January", "Febrary", "March", "April", "May", "June", "July", "Auguest", "September", "October", "November", "December"];
 
+//This is the message what shown as events in calendar.
 var my_cal = [
   [2021, 'September', 2, 'movie.'],
   [2021, 'September', 1, 'party'],
@@ -86,6 +87,7 @@ function refreshDate() {
     oLi[j].mark = false;
     // str += "<li"+myclass+">"+i+"</li>";
   }
+
   //show days, month, and year
   // holder.innerHTML = str;
   ctitle.innerHTML = month_name[my_month];
@@ -103,23 +105,21 @@ function refreshDate() {
 
   }
   // alert(mark_cal+','+mark_cal_msg+firstDay+oLi[8].mark);
-
-
-
   //oDayMsg.innerHTML = mark_cal;//ctitle.innerHTML;
   // alert(my_cal[2][0]+my_year+my_cal[2][1]+month_name[my_month]+my_cal[2][2]+my_cal[2][3]);
 }
 
 // run the above function
 refreshDate();
+
 // for(var i=0;i<37;i++){
 // 	oLi[i].onmouseover=function(){
-
 // 	oDayMsg.innerHTML = cyear.innerHTML+','+ctitle.innerHTML+','+oLi[i].innerHTML;
 // 	//  myDaysClk(i);
 // 	};
 // }
-// when click prev: month - 1, when month = 0, year -1, and month = December
+
+// when click prev: month - 1; when month = 0, year -1, and month = December
 // oppisite when click next
 prev.onclick = function () {
   // e.preventDefault();
@@ -129,7 +129,6 @@ prev.onclick = function () {
     my_month = 11;
   }
   refreshDate();
-
 }
 next.onclick = function () {
   // e.preventDefault();
@@ -141,7 +140,8 @@ next.onclick = function () {
   refreshDate();
 
 }
-//event
+
+//function that makes the event works
 function myDaysClk(liNum) {
   // var li_day=oLi[liNum].innerHTML;
   // var daysMsg="meeting";
@@ -153,53 +153,120 @@ function myDaysClk(liNum) {
     oDayMsg.innerHTML = "";
   }
   // li_day;
-
   // alert(oLi[liNum].mark);
 }
 
-
+//this is to let the event date able to be clicked.
+//37 is 31+6: maximum 31 days in a year and maximum 6 days of empty <li> at the start of the month.
+// I did this because the for loop somehow not working..
 oLi[0].onmouseover = function () {
   myDaysClk(0);
 }
-
 oLi[1].onmouseover = function () {
   myDaysClk(1);
 }
-
 oLi[2].onmouseover = function () {
   myDaysClk(2);
 }
 oLi[3].onmouseover = function () {
   myDaysClk(3);
 }
-
 oLi[4].onmouseover = function () {
   myDaysClk(4);
 }
-
 oLi[5].onmouseover = function () {
   myDaysClk(5);
 }
 oLi[6].onmouseover = function () {
   myDaysClk(6);
 }
-
 oLi[7].onmouseover = function () {
   myDaysClk(7);
 }
-
 oLi[8].onmouseover = function () {
   myDaysClk(8);
 }
 oLi[9].onmouseover = function () {
   myDaysClk(9);
 }
-
 oLi[10].onmouseover = function () {
   myDaysClk(10);
 }
-
 oLi[11].onmouseover = function () {
   myDaysClk(11);
 }
-
+oLi[12].onmouseover = function () {
+  myDaysClk(12);
+}
+oLi[13].onmouseover = function () {
+  myDaysClk(13);
+}
+oLi[14].onmouseover = function () {
+  myDaysClk(14);
+}
+oLi[15].onmouseover = function () {
+  myDaysClk(15);
+}
+oLi[16].onmouseover = function () {
+  myDaysClk(16);
+}
+oLi[17].onmouseover = function () {
+  myDaysClk(17);
+}
+oLi[18].onmouseover = function () {
+  myDaysClk(18);
+}
+oLi[19].onmouseover = function () {
+  myDaysClk(19);
+}
+oLi[20].onmouseover = function () {
+  myDaysClk(20);
+}
+oLi[21].onmouseover = function () {
+  myDaysClk(21);
+}
+oLi[22].onmouseover = function () {
+  myDaysClk(22);
+}
+oLi[23].onmouseover = function () {
+  myDaysClk(23);
+}
+oLi[24].onmouseover = function () {
+  myDaysClk(24);
+}
+oLi[25].onmouseover = function () {
+  myDaysClk(25);
+}
+oLi[26].onmouseover = function () {
+  myDaysClk(26);
+}
+oLi[27].onmouseover = function () {
+  myDaysClk(27);
+}
+oLi[28].onmouseover = function () {
+  myDaysClk(28);
+}
+oLi[29].onmouseover = function () {
+  myDaysClk(29);
+}
+oLi[30].onmouseover = function () {
+  myDaysClk(30);
+}
+oLi[31].onmouseover = function () {
+  myDaysClk(31);
+}
+oLi[32].onmouseover = function () {
+  myDaysClk(32);
+}
+oLi[33].onmouseover = function () {
+  myDaysClk(33);
+}
+oLi[34].onmouseover = function () {
+  myDaysClk(34);
+}
+oLi[35].onmouseover = function () {
+  myDaysClk(35);
+}
+oLi[36].onmouseover = function () {
+  myDaysClk(36);
+}
