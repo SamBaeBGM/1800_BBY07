@@ -66,7 +66,7 @@ Firebase hosting files:
 ## Contact 
 * Sam(Gangmin) Bae - sbae35@my.bcit.ca
 * Shayan Zahedanaraki - szahedanaraki@my.bcit.ca
-* Zihan Li - 
+* Zihan Li - zli214@my.bcit.ca
 
 
 ## Acknowledgements 
