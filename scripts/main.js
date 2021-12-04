@@ -15,10 +15,12 @@ function sayHello() {
         });
     } else {
       // No user is signed in.
+      //console.log("not signed in")
     }
   });
 }
 
+// The function where it will be called when the web is loaded
 window.onload = () => {
   const checkInput = document.querySelector("#todo-input");
   const inputSumbitBtn = document.querySelector("#submit-button");
@@ -29,8 +31,8 @@ window.onload = () => {
   // todo related data store
   let inputValue;
   let todoListData = [];
-
   // let todo = [];
+
   function databaseTask() {
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
@@ -40,7 +42,6 @@ window.onload = () => {
           .get()
           .then(function (querySnapshot) {
             querySnapshot.forEach(function (doc) {
-              // doc.data() is never undefined for query doc snapshots
               todoListData.push(doc.data().task);
             });
             if (todoListData === undefined || todoListData == 0) {
@@ -56,9 +57,8 @@ window.onload = () => {
     });
   }
   databaseTask();
-  // put input in the data
 
-  // get input
+  // the add function, user can either click or press enter to add the data.
   checkInput.addEventListener("keyup", function (event) {
     if (event.code == "Enter") {
       inputSumbitBtn.onclick();
@@ -67,7 +67,7 @@ window.onload = () => {
     }
   });
 
-  // put input in the data
+  //When the reminder is created and it is not empty, it will add the data to the firestore.
   let iterator = 0;
   inputSumbitBtn.onclick = function () {
     if (inputValue == undefined || inputValue.trim() == "") {
@@ -88,6 +88,8 @@ window.onload = () => {
       iterator++;
     }
   };
+
+  // function of removing only checked off reminders. It will remove data from firestore as well.
   removeCheckedBtn.addEventListener("click", function () {
     //console.log(todoListData);
     let allTodos = document.querySelectorAll(".todo");
@@ -118,13 +120,13 @@ window.onload = () => {
     }
   });
 
+  // Removing all task function. Removes the data from firestore as well.
   removeAll.onclick = function () {
     let allTodos = document.querySelectorAll(".todo");
     for (let i = 0; i < todoListData.length; i++) {
       allTodos[i].remove();
     }
     todoListData = [];
-    // Delete function
     firebase.auth().onAuthStateChanged(function (user) {
       db.collection("users")
         .doc(user.uid)
@@ -138,7 +140,7 @@ window.onload = () => {
     });
   };
 
-  // Creation of list template
+  // Creation of list template. Creating list html when the function is called.
   function makeList(target, data) {
     let targetChild = document.querySelectorAll(".todo");
     for (let child of targetChild) {
@@ -175,28 +177,28 @@ window.onload = () => {
         }
       });
 
-      // // Delete function
-      // target[i].childNodes[5].addEventListener("click", function () {
-      //     this.parentNode.remove();
-      //     data.splice(i, 1);
-      //     target = document.querySelectorAll(".todo");
+      // Reminder delete function, Could not update the firestore...
+      target[i].childNodes[5].addEventListener("click", function () {
+        this.parentNode.remove();
+        data.splice(i, 1);
+        target = document.querySelectorAll(".todo");
 
-      //     firebase.auth().onAuthStateChanged(function (user) {
-      //         db.collection("users")
-      //             .doc(user.uid)
-      //             .collection("reminders")
-      //             .get()
-      //             .then(function (querySnapshot) {
-      //                 querySnapshot.forEach(function (doc) {
-      //                     if (doc.data().task == todoListData[i]) {
-      //                         doc.ref.delete();
-      //                     }
-      //                 });
-      //             });
-      //     });
-      // });
+        //     firebase.auth().onAuthStateChanged(function (user) {
+        //         db.collection("users")
+        //             .doc(user.uid)
+        //             .collection("reminders")
+        //             .get()
+        //             .then(function (querySnapshot) {
+        //                 querySnapshot.forEach(function (doc) {
+        //                     if (doc.data().task == todoListData[i]) {
+        //                         doc.ref.delete();
+        //                     }
+        //                 });
+        //             });
+        //     });
+      });
 
-      // Edit function
+      // Reminder Edit function, the data is updated in the firestore as well.
       target[i].childNodes[7].addEventListener("click", function () {
         var prompt = window.prompt("Please input your edited task.");
         if (prompt.length > 0) {

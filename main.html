@@ -159,14 +159,14 @@
 
     <!-- Optional styles and scripts of your own -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link type="text/css" rel="stylesheet" href="styles/my_style.css">
+    <link type="text/css" rel="stylesheet" href="styles/my-style.css">
     <link type="text/css" rel="stylesheet" href="styles/calendar.css">
     <link href="images/pigeon.jpeg" rel="icon" type="image/x-icon" />
-    <script src="./scripts/my_script.js"></script>
+    <script src="./scripts/my-script.js"></script>
     <script src="scripts/calendar.js"></script>
     <script src="./scripts/main.js"></script>
     <script>
-                function insertName() {
+        function insertName() {
             firebase.auth().onAuthStateChanged(user => {
                 // Check if user is signed in:
                 if (user) {
